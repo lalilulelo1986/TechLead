@@ -5,7 +5,7 @@ fun main() {
     println(Solution16(exprestion.toCharArray()).calculate())
 }
 
-// My
+// My solution 1
 class Solution16(val charArray: CharArray) {
     var index1 = -1
     fun calculate(): Int {
@@ -24,7 +24,7 @@ class Solution16(val charArray: CharArray) {
                 operator = charArray[index1]
                 operand = "0"
             } else {
-                if (charArray[index1] in arrayOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'))
+                if (charArray[index1].isDigit())
                     operand += charArray[index1]
             }
             if (index1 == charArray.size - 1) {
