@@ -2,7 +2,9 @@ package techlead
 
 import java.util.*
 
+// TODO cool usage of LinkedList
 fun main() {
+    // first - person height, second - how much people he can see in front of him
     val inputArray = arrayOf(Pair(7, 0), Pair(4, 4), Pair(7, 1), Pair(5, 0), Pair(6, 1), Pair(5, 2))
     reQueue2(inputArray)
 }

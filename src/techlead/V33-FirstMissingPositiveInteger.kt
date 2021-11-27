@@ -50,6 +50,7 @@ fun firstMissingFast(arr: Array<Int>): Int {
 }
 
 // swap mutable solution
+// TODO Cool algo
 fun firstMissingSwap(arr: Array<Int>): Int {
     if (arr.size == 1 && arr[0] == 1)
         return 2
