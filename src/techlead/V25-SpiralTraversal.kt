@@ -26,7 +26,7 @@ fun buildPath(xSize: Int, ySize: Int): HashMap<String, Int> {
     var y = 0
     while (count < xSize * ySize) {
         path["${x},${y}"] = count
-        when (road.mod(4)) {
+        when (road % (4)) {
             0 -> if (y + 1 in (0 until ySize) && path["${x},${y + 1}"] == null) {
                 y++; count++
             } else {
