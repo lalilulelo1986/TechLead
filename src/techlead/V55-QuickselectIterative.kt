@@ -1,9 +1,6 @@
 package techlead
 
 import java.util.*
-import kotlin.collections.HashMap
-import kotlin.math.max
-import kotlin.math.min
 
 fun main() {
     val arr = arrayOf(4, 3, 5, 2, 0, 1)
@@ -11,7 +8,7 @@ fun main() {
     println(quickSelect(arr, 3))
     val arr2 = arrayOf(8, 7, 2, 3, 4, 1, 5, 6, 9, 0)
     println("heap largest: ${findKthLargest(arr2, 4)}")
-    println(quickSelect(arr2, 3))
+    println(quickSelect(arr2, 4))
 }
 
 // My fast
