@@ -9,9 +9,6 @@ fun main() {
 }
 
 fun findAnagrams(src: String, target: String): Array<Int> {
-    if (src.length < target.length)
-        return emptyArray()
-
     val occurrence = HashMap<Char, Int>()
     target.forEach {
         occurrence[it] = occurrence.getOrDefault(it, 0) + 1
