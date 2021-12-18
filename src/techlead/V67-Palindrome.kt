@@ -11,6 +11,7 @@ fun main() {
     println(getPalindrome("t"))
     println(getPalindrome("to"))
     println(getPalindrome("too"))
+    println(getPalindrome(""))
 }
 
 fun getPalindrome(str: String): String? {
