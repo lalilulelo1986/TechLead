@@ -1,6 +1,10 @@
 package techlead
 
 import techlead.common.Node
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
 import java.util.*
 
 fun main() {
@@ -20,6 +24,22 @@ fun main() {
     val serialized = serialize(tree)
     println(serialized)
     println(deserialize(serialized))
+
+    // Externalizable approach
+    val byteArrayOutputStream = ByteArrayOutputStream()
+    val out = ObjectOutputStream(byteArrayOutputStream)
+    tree.writeExternal(out)
+    out.flush()
+    out.close()
+    val bytes = byteArrayOutputStream.toByteArray()
+
+    println(bytes)
+    val node = Node(0)
+    ObjectInputStream(ByteArrayInputStream(bytes)).use {
+        node.readExternal(it)
+        println("EXT: ")
+        println(node)
+    }
 }
 
 fun <T> serialize(node: Node<T>): String {

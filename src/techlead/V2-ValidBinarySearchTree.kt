@@ -27,12 +27,12 @@ fun validateTree(node: Node<Int>): Int {
     val maxLeft = if (node.left == null) node.value else validateTree(node.left!!)
     val maxRight = if (node.right == null) node.value else validateTree(node.right!!)
 
-    if (maxLeft > node.value || maxRight < node.value) {
+    if (maxLeft!! > node.value!! || maxRight!! < node.value!!) {
         isValid = false
         println("$maxLeft > ${node.value} $maxRight < ${node.value}")
         return 0
     } else {
-        return node.right?.value ?: node.value
+        return node.right?.value ?: node.value!!
     }
 }
 
@@ -46,6 +46,6 @@ fun validateHelper(node: Node<Int>?, min: Int, max: Int): Boolean {
         return true
 
     return node.value in min..max &&
-        validateHelper(node.left, min, node.value) &&
-        validateHelper(node.right, node.value, max)
+        validateHelper(node.left, min, node.value!!) &&
+        validateHelper(node.right, node.value!!, max)
 }

@@ -34,7 +34,7 @@ fun elementsOfHeight(node: Node<Int>, height: Int): List<Int> {
 fun traverse(node: Node<Int>?, height: Int, currHeight: Int): List<Int> {
     if (node == null) return emptyList()
     if (height == currHeight)
-        return listOf(node.value)
+        return listOf(node.value!!)
 
     return traverse(node.left, height, currHeight + 1) + traverse(node.right, height, currHeight + 1)
 }
