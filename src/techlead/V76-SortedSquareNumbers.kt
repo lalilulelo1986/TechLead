@@ -1,2 +1,6 @@
 package techlead
 
+fun main() {
+
+}
+

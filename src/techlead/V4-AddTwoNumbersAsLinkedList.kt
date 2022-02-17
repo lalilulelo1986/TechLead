@@ -7,7 +7,12 @@ package techlead
 data class LinkedNode<T>(
     var value: T,
     var next: LinkedNode<T>? = null
-)
+) {
+    override fun toString(): String {
+        return "${this.value}${if (this.next != null) "," else ""} ${this.next ?: ""}"
+    }
+
+}
 
 fun main() {
     val list1 = LinkedNode(6).also { it.next = LinkedNode(4).also { it.next = LinkedNode(2) } }

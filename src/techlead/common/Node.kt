@@ -10,7 +10,8 @@ import java.util.*
 class Node<T>(
     var value: T?,
     var left: Node<T>? = null,
-    var right: Node<T>? = null
+    var right: Node<T>? = null,
+    var parent: Node<T>? = null
 ) : Externalizable {
     override fun toString(): String {
         return "Node(value=$value, left=$left, right=$right)"
