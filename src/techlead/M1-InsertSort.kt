@@ -1,7 +1,7 @@
 package techlead
 
 fun main() {
-    val arr = arrayOf(4, 3, 2, 6, 8, 1)
+    val arr = arrayOf(4, 3, 2, 6, 8, 1, 1)
     println(insertSort(arr).toList())
 }
 
@@ -13,7 +13,6 @@ fun insertSort(arr: Array<Int>): Array<Int> {
         while (prev >= 0 && key < arr[prev]) {
             arr[prev + 1] = arr[prev]
             prev--
-            println(arr.toList())
         }
         if (prev != i - 1)
             arr[prev + 1] = key
