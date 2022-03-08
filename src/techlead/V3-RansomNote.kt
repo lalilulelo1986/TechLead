@@ -3,8 +3,8 @@ package techlead
 val magazine = arrayOf('A', 'B', 'C', 'D', 'E', 'F', 'A')
 
 fun main() {
-    val canSpell = canSpell2(magazine, "BFCAAA")
-    println(canSpell)
+    println(canSpell(magazine, "BFCAA"))
+    println(canSpell2(magazine, "BFCAA"))
 }
 
 // Solution 1 BroodForce
@@ -16,6 +16,7 @@ fun canSpell(magazine: Array<Char>, word: String): Boolean {
             if (magazine[i] == char && visited[i].not()) {
                 visited[i] = true
                 charFound++
+                break
             }
         }
     }
@@ -30,7 +31,7 @@ fun canSpell2(magazine: Array<Char>, word: String): Boolean {
         wordsByAmount.computeIfAbsent(it) { 0 }
         wordsByAmount.computeIfPresent(it) { _, v -> v + 1 }
     }
-    println(wordsByAmount)
+//    println(wordsByAmount)
     word.forEach {
         val afterDecrement = wordsByAmount.computeIfPresent(it) { _, v -> v - 1 } ?: -1
         if (afterDecrement < 0)

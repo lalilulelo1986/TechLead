@@ -15,9 +15,10 @@ data class LinkedNode<T>(
 }
 
 fun main() {
-    val list1 = LinkedNode(6).also { it.next = LinkedNode(4).also { it.next = LinkedNode(2) } }
-    val list2 = LinkedNode(3).also { it.next = LinkedNode(7).also { it.next = LinkedNode(2) } }
-    println("Result list: ${addLists(list1, list2)}")
+    val list1 = LinkedNode(5).also { it.next = LinkedNode(2).also { it.next = LinkedNode(1) } }
+    val list2 = LinkedNode(1).also { it.next = LinkedNode(8).also { it.next = LinkedNode(4) } }
+//    println("Result list: ${addLists(list1, list2)}")
+    println("Result list: ${addLists2(list1, list2)}")
 }
 
 // Solution with isMind: Boolean
@@ -69,26 +70,24 @@ fun addLists(list1: LinkedNode<Int>?, list2: LinkedNode<Int>?): LinkedNode<Int>?
 // Solution with inMind: Int TODO need to finish
 fun addLists2(list1: LinkedNode<Int>?, list2: LinkedNode<Int>?): LinkedNode<Int>? {
     var result: LinkedNode<Int>? = null
+    var pointer: LinkedNode<Int>? = null
     var inMind = 0
     var list1Pointer = list1
     var list2Pointer = list2
 
     while (list1Pointer != null || list2Pointer != null) {
-        val sum = (list1Pointer?.value?.plus(list2Pointer?.value ?: 0))
-        sum?.let {
-            inMind = sum.rem(10)
-            if (result == null) {
-                result = LinkedNode(sum.rem(10))
-                if (inMind > 0) {
-                    result!!.next = LinkedNode((sum) / 10)
-                }
-                return@let
-            }
+        val sum = (list1Pointer?.value?.plus(list2Pointer?.value ?: 0))?.plus(inMind) ?: 0
 
-            if (result != null) {
-
-            }
+        inMind = if (sum < 10) 0 else sum.rem(9)
+        if (pointer == null) {
+            result = LinkedNode(sum.rem(10))
+            pointer = result
+        } else {
+            pointer.next = LinkedNode(sum.rem(10))
+            pointer = pointer.next
         }
+        list1Pointer = list1Pointer?.next
+        list2Pointer = list2Pointer?.next
     }
 
     return result

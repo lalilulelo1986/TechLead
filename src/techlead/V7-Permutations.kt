@@ -21,7 +21,8 @@ fun main() {
 //    println(permutation2.result.size)
 //    permutation2.result.forEach { println(it.toList()) }
 
-    PermCutting().perm(mutableListOf(1, 2, 3), mutableListOf())
+//    PermCutting().perm(mutableListOf(1, 2, 3), mutableListOf())
+    Permutation2().permute(arrayOf(1, 2, 3), 0)
 }
 
 // HashMap SHIT

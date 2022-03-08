@@ -10,6 +10,7 @@ class Solution {
     var firstEl = -1
     var lastEl = -1
 
+    // binary search
     fun findFirstAndLast(arr: Array<Int>, target: Int, first: Int, last: Int): Array<Int> {
         val mid = (last + first) / 2
         println("mid: $mid first: $first last: $last")
