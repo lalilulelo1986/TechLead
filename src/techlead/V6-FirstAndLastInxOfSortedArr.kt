@@ -1,7 +1,7 @@
 package techlead
 
 fun main() {
-    val sortedArray = arrayOf(1, 3, 3, 5, 7, 8, 9, 9, 15)
+    val sortedArray = arrayOf(1, 3, 5, 5, 7, 8, 9, 9, 15)
 
     println(Solution().findFirstAndLast(sortedArray, 5, 0, sortedArray.size - 1).toList())
 }

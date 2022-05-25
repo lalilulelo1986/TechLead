@@ -6,7 +6,7 @@ fun main() {
         it.next = LinkedNode(1).also {
             it.next = LinkedNode(2).also {
                 it.next = LinkedNode(3).also {
-                    it.next = LinkedNode(3)
+                    it.next = LinkedNode(2)
                 }
             }
         }
@@ -33,12 +33,12 @@ fun removeDuplicate(list: LinkedNode<Int>?): LinkedNode<Int>? {
     var tail = head
     var curr = head
     while (curr.next != null) {
-        if (visited.contains(curr.next?.value!!).not()) {
-            visited.add(curr.next?.value!!)
-            tail.next = curr.next
+        curr = curr.next!!
+        if (visited.contains(curr.value).not()) {
+            visited.add(curr.value)
+            tail.next = curr
             tail = tail.next!!
         }
-        curr = curr.next!!
     }
     tail.next = null
 

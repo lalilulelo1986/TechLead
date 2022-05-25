@@ -2,7 +2,8 @@ package techlead
 
 fun main() {
     val exprestion = "1 + ((1 + (2 + (3 + (4 + 5))))) - 8"
-    println(Solution16(exprestion.toCharArray()).calculate())
+    val exprestion2 = "10 - (3 - 4)"
+    println(Solution16(exprestion2.toCharArray()).calculate())
 }
 
 // My solution 1

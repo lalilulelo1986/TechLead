@@ -1,9 +1,9 @@
 package techlead
 
 import techlead.common.Node
-import kotlin.io.path.createTempDirectory
 
-// find next largest value
+// you've binary search tree
+// find next biggest value, it can be in other branch
 fun main() {
     // given binary search tree
     val a = Node(4).also { f4 ->
@@ -34,19 +34,34 @@ fun main() {
     println(nextBigVal(a.right!!.left!!.right!!))
     println(nextBiggerValue(a, a))
     println(nextBigVal(a))
+
+    println("new")
+    val b = Node(5).also { f5 ->
+        f5.left = Node(3).also { f3 ->
+            f3.parent = f5
+            f3.left = Node(2).also {
+                it.parent = f3
+            }
+            f3.right = Node(4).also {
+                it.parent = f3
+            }
+        }
+    }
+    println(nextBiggerValue(b, b.left!!.right!!))
+    println(nextBigVal(b.left!!.right!!))
 }
 
-fun nextBiggerValue(a: Node<Int>?, b: Node<Int>): Node<Int>? {
-    if (a == null)
+fun nextBiggerValue(root: Node<Int>?, b: Node<Int>): Node<Int>? {
+    if (root == null)
         return null
 
     var curr: Node<Int>? = null
-    if (a.value!! > b.value!!)
-        curr = a
+    if (root.value!! > b.value!!)
+        curr = root
 
-    val next = if (a.value!! > b.value!!)
-        nextBiggerValue(a.left, b)
-    else nextBiggerValue(a.right, b)
+    val next = if (root.value!! > b.value!!)
+        nextBiggerValue(root.left, b)
+    else nextBiggerValue(root.right, b)
 
     if (curr == null)
         curr = next

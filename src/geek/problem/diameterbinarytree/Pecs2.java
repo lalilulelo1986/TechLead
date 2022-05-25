@@ -2,6 +2,7 @@ package geek.problem.diameterbinarytree;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
 public class Pecs2 {
@@ -9,6 +10,8 @@ public class Pecs2 {
     List<? super Number> list2;
     void first() {
         Number number = list.get(0);
+        AtomicInteger sdf = new AtomicInteger();
+        sdf.incrementAndGet();
 //        list.add(new Object());
     }
 

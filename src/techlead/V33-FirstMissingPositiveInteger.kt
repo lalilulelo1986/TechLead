@@ -9,7 +9,8 @@ fun main() {
 //            it[2] = -1
 //            it.shuffle()
 //        }
-    val arr = arrayOf(0)
+    val arr = arrayOf(0, 1, 2, 3
+     )
 
     val start = Instant.now().toEpochMilli()
 
@@ -17,7 +18,7 @@ fun main() {
 //        println(firstMissingFast(toIntArray)) //  63
 //    println(firstMissing(toIntArray)) // 22
 
-    println((Instant.now().toEpochMilli() - start) / 1000)
+//    println((Instant.now().toEpochMilli() - start) / 1000)
 }
 
 // my time complexity

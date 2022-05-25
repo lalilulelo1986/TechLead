@@ -14,6 +14,7 @@ fun main() {
     println(MySolution19.findWord(wordMatrix, "FACI"))
     println(MySolution19.findWord(wordMatrix, "OBQP"))
     println(MySolution19.findWord(wordMatrix, "OBQX"))
+    println(MySolution19.findWord(wordMatrix, "PQBO"))
 }
 
 class MySolution19 {

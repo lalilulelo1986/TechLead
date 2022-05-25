@@ -1,5 +1,7 @@
 package techlead
 
+import kotlin.test.currentStackTrace
+
 fun main() {
     val links = LinkedNode(1).also {
         it.next = LinkedNode(2).also {
@@ -10,7 +12,7 @@ fun main() {
             }
         }
     }
-    println(rotateLinked(links, 3))
+    println(rotateLinked(links, 6))
 //    println(rotateLinked(links, 2))
 //    println(rotateLinked(links, 3))
 //    println(rotateLinked(links, 4))
@@ -39,6 +41,27 @@ fun rotateLinked(node: LinkedNode<Int>?, rotates: Int): LinkedNode<Int>? {
     val head = slow?.next
     slow?.next = null
     fast?.next = node
+    return head
+}
+
+fun rotateLinked2(node: LinkedNode<Int>?, rotates: Int): LinkedNode<Int>? {
+    if (node == null) return null
+    var length = 1
+    var tail = node
+    while (tail?.next != null) {
+        length++
+        tail = tail.next
+    }
+
+    val offset = rotates.mod(length)
+    var slow = node
+    for (i in 1 until length - offset) {
+        slow = slow?.next
+    }
+
+    tail?.next = node
+    val head = slow?.next
+    slow?.next = null
     return head
 }
 

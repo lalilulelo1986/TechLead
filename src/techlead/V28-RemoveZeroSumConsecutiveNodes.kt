@@ -16,6 +16,7 @@ fun main() {
                 }
         }
 
+    println(list1)
     println(remuveSubZeroLists(list1))
 }
 

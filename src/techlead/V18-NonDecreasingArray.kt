@@ -1,5 +1,8 @@
 package techlead
 
+/*
+* One modify allow to do it non-decreasing
+* */
 fun main() {
     val arr = arrayOf(4, 1, 2)
     val arr2 = arrayOf(3, 2, 4, 1)
