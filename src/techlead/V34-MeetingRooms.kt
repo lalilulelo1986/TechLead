@@ -12,13 +12,12 @@ fun main() {
     var arr4 = arrayOf(Pair(0, 9), Pair(0, 3), Pair(1, 4), Pair(2, 6), Pair(4, 7), Pair(6, 9), 4 to 8)
 
     println(meetingRooms(arr))
-    println(meetingRooms(arr2))
-    println(meetingRooms(arr3))
-    println(meetingRooms(arr4))
-
     println(meetingRooms2(arr))
+    println(meetingRooms(arr2))
     println(meetingRooms2(arr2))
+    println(meetingRooms(arr3))
     println(meetingRooms2(arr3))
+    println(meetingRooms(arr4))
     println(meetingRooms2(arr4))
 }
 

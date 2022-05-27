@@ -1,6 +1,7 @@
 package techlead
 
 import techlead.common.Node
+import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
@@ -21,7 +22,9 @@ fun main() {
     }
 
     println(isBalanced(tree))
+    println(isBalanced2(tree))
     println(isBalanced(noBalancedTree))
+    println(isBalanced2(noBalancedTree))
 }
 
 // My
@@ -31,6 +34,7 @@ fun <T> isBalanced(node: Node<T>): Boolean {
         return false
     return true
 }
+
 fun <T> maxMin(node: Node<T>?, height: Int = 1): Pair<Int, Int> {
     if (node == null)
         return Pair(height, height)
@@ -41,6 +45,19 @@ fun <T> maxMin(node: Node<T>?, height: Int = 1): Pair<Int, Int> {
         max(max(leftMaxMin.first, leftMaxMin.second), max(rightMaxMin.first, rightMaxMin.second)),
         min(min(leftMaxMin.first, leftMaxMin.second), min(rightMaxMin.first, rightMaxMin.second)),
     )
+}
+
+// Tech
+fun <T> isBalanced2(node: Node<T>?): Pair<Boolean, Int> {
+    if (node == null)
+        return true to 0
+
+    val leftResult: Pair<Boolean, Int> = isBalanced2(node.left)
+    val rightResult: Pair<Boolean, Int> = isBalanced2(node.right)
+    return (leftResult.first && rightResult.first && abs(leftResult.second - rightResult.second) <= 1) to max(
+        leftResult.second,
+        rightResult.second
+    ) + 1
 }
 
 // TechLead

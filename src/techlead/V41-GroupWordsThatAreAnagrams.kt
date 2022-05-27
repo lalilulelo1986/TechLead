@@ -15,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap
 fun main() {
     val words = arrayOf("abc", "bcd", "cba", "cbd", "efg", "abba", "baab")
     println(groupAnagrams(words))
+    println(groupAnagrams2(words))
 }
 
 fun groupAnagrams(words: Array<String>): List<List<String>> {
@@ -46,6 +47,19 @@ fun groupAnagrams(words: Array<String>): List<List<String>> {
         }
     }
 
+    return result
+}
+
+// Kind a Tech
+fun groupAnagrams2(words: Array<String>): Map<String, MutableList<String>> {
+    val result = HashMap<String, MutableList<String>>()
+    words.forEach { word ->
+        val arr = mutableListOf<Char>()
+        word.forEach { c ->
+            arr.add(c)
+        }
+        result[arr.sorted().joinToString()]?.add(word) ?: run { result[arr.sorted().joinToString()] = mutableListOf(word) }
+    }
     return result
 }
 

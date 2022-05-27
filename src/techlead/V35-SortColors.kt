@@ -99,7 +99,7 @@ fun sortThreeUniqueHash(array: Array<Int>): Array<Int> {
     return array
 }
 
-// tech Solution with only 2 pointers
+// tech Solution with only 2 pointers. PREDETERMINED DIGITS
 //def sortColor2(self, colors):
 //  lowIndex = 0
 //  highIndex = len(colors) - 1

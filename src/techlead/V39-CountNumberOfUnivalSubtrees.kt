@@ -14,7 +14,7 @@ fun main() {
             it.right = Node(0)
         }
     }
-    println(countUnivalSubTrees(tree))
+    println(countUnivalSubTrees2(tree))
 }
 
 fun countUnivalSubTrees(node: Node<Int>?): Pair<Boolean, Int> {
@@ -30,4 +30,16 @@ fun countUnivalSubTrees(node: Node<Int>?): Pair<Boolean, Int> {
             ?: node.value) && node.value == (node.right?.value ?: node.value),
         leftTree.second + rightTree.second + if (currBalanced) 1 else 0
     )
+}
+
+// My new. Seems worked
+fun countUnivalSubTrees2(node: Node<Int>?): Boolean {
+    if (node == null)
+        return true
+
+    val leftTree = countUnivalSubTrees2(node.left)
+    val rightTree = countUnivalSubTrees2(node.right)
+    val currBalanced = leftTree && rightTree && node.value == (node.left?.value
+        ?: node.value) && node.value == (node.right?.value ?: node.value)
+    return currBalanced
 }
