@@ -2,6 +2,7 @@ package techlead
 
 import techlead.common.Node
 import java.util.*
+import kotlin.collections.ArrayDeque
 import kotlin.math.max
 
 // NO RECURSION!!!
@@ -9,7 +10,9 @@ fun main() {
     val tree = Node(1).also {
         it.left = Node(2).also {
             it.left = Node(4).also {
-                it.right = Node(6)
+                it.right = Node(6).also {
+                    it.left = Node(33)
+                }
             }
         }
         it.right = Node(3).also {
@@ -19,6 +22,8 @@ fun main() {
     }
     println("height: " + maxDepth(tree))
     println("height: " + findDepth(tree))
+    println("height: " + findDepthQueue(tree))
+    println("height: " + findDepthRecursion(tree))
 }
 
 // My
@@ -49,7 +54,7 @@ fun <T> maxDepth(node: Node<T>?): Int {
     return maxHeight
 }
 
-// TechLead
+// TechLead Stack
 fun <T> findDepth(node: Node<T>?): Int {
     val stack = Stack<Pair<Node<T>?, Int>>()
     stack.push(node to 1)
@@ -65,4 +70,31 @@ fun <T> findDepth(node: Node<T>?): Int {
     }
 
     return maxDepth
+}
+
+// My Queue
+fun <T> findDepthQueue(node: Node<T>): Int {
+    val queue: Queue<Node<T>> = java.util.ArrayDeque()
+    queue.add(node)
+
+    var size = queue.size
+    var maxDepth = 0
+    while (queue.isNotEmpty()) {
+        val pop = queue.poll()
+        if (pop.left != null) queue.add(pop.left!!)
+        if (pop.right != null) queue.add(pop.right!!)
+        size--
+        if (size == 0) {
+            size = queue.size
+            maxDepth++
+        }
+    }
+
+    return maxDepth
+}
+
+// My recursion
+fun <T> findDepthRecursion(node: Node<T>?): Int {
+    if (node == null) return 0
+    return max(findDepthRecursion(node.left), findDepthRecursion(node.right)) + 1
 }

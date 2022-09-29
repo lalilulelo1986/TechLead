@@ -38,6 +38,14 @@ fun isSubTree2(a: Node<Int>?, b: Node<Int>?, inside: Boolean = false): Boolean {
     return isSubTree2(a.left, b, false) || isSubTree2(a.right, b, false)
 }
 
+//fun isSubTreeMy2(a: Node<Int>?, b: Node<Int>?): Boolean {
+//    if (a == null && b == null)
+//        return true
+//    if (a?.value == b?.value) {
+//        return isSubTreeMy2(a?.left, b?.left) && isSubTreeMy2(a?.right, b?.right)
+//    }
+//}
+
 fun main() {
     val a = Node(1).also {
         it.left = Node(4).also {
