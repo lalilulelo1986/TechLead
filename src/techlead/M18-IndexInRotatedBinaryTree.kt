@@ -5,7 +5,7 @@ package techlead
 * */
 fun main() {
     val array = arrayOf(5, 6, 8, 12, 100, 1, 1, 3, 4)
-    indexOf(array, 12)
+    indexOf(array, 4)
     println(index)
 }
 
@@ -30,8 +30,12 @@ fun indexOf(array: Array<Int>, number: Int, begin: Int = 0, end: Int = array.siz
         indexOf(array, number, midIndex + 1, end)
         return
     }
-    if (leftOrdered.not() && (number >= array[begin] || number <= array[midIndex]))
+    if (leftOrdered.not() && (number >= array[begin] || number <= array[midIndex])) {
         indexOf(array, number, begin, midIndex - 1)
-    if (rightOrdered.not() && (number >= array[midIndex] || number <= array[end]))
+        return
+    }
+    if (rightOrdered.not() && (number >= array[midIndex] || number <= array[end])) {
         indexOf(array, number, midIndex + 1, end)
+        return
+    }
 }
