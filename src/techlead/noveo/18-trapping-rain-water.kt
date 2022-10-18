@@ -21,10 +21,8 @@ fun trap(height: IntArray): Int {
             if (l >= h && inside.not())
                 inside = true
 
-            if (l >= h && localSize > 0 && inside) {
-                result += localSize
-                localSize = 0
-            }
+            if (l >= h && localSize > 0 && inside)
+                result += localSize.also { localSize = 0 }
         }
     }
 
