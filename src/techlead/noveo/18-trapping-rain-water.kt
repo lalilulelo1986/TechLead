@@ -15,14 +15,11 @@ fun trap(height: IntArray): Int {
         var inside = false
         var localSize = 0
         for (l in height) {
-            if (l >= h && inside.not()) {
-                inside = true
-                localSize = 0
-                continue
-            }
-
-            if (l < h)
+            if (l < h && inside)
                 localSize++
+
+            if (l >= h && inside.not())
+                inside = true
 
             if (l >= h && localSize > 0 && inside) {
                 result += localSize
