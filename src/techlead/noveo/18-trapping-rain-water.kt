@@ -3,11 +3,13 @@ package techlead.noveo
 import kotlin.test.assertEquals
 
 fun main() {
+    // квадратич
     val array = arrayOf(0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1).toIntArray()
     assertEquals(6, trap(array))
 
+    // линейн
     val array2 = arrayOf(0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1).toIntArray()
-    println(trap2(array2))
+    assertEquals(6, trap2(array2))
 }
 
 fun trap(height: IntArray): Int {
