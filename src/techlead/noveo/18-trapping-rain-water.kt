@@ -36,7 +36,16 @@ fun trap(height: IntArray): Int {
 
 // линейное время. конст. память
 fun trap2(height: IntArray): Int {
-    val maxHeightIndex = height.maxOrNull()?.let { height.indexOf(it) } ?: -1
+    if (height.isEmpty())
+        return 0
+    var maxHeightIndex = 0
+    var maxHeight = 0
+    height.forEachIndexed { index, i ->
+        if (i > maxHeight) {
+            maxHeight = i
+            maxHeightIndex = index
+        }
+    }
 
     var currMaxHeight = 0
     var result = 0
