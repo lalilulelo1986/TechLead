@@ -1,14 +1,31 @@
 package techlead.noveo
 
 fun main() {
-    val strs = arrayOf("eat","tea","tan","ate","nat","bat")
+    val strs = arrayOf("eat", "tea", "tan", "ate", "nat", "bat")
     println(groupAnagrams(strs))
-
-    val strs2 = arrayOf<String>()
-    println(groupAnagrams(strs2))
 }
 
 fun groupAnagrams(strs: Array<String>): List<List<String>> {
+    val result = HashMap<String, MutableList<String>>()
+    strs.forEach { str ->
+        val array = IntArray(26)
+        str.forEach {
+            val charCode = 25 - ('z'.code - it.code)
+            array[charCode] = array[charCode] + 1
+        }
+        val sb = buildString {
+            array.forEachIndexed { index, i ->
+                for (s in 1..i)
+                    this.append(Char('a'.code + index))
+            }
+        }
+        result.computeIfAbsent(sb) { mutableListOf() }
+        result.computeIfPresent(sb) { _, v -> v.also { it.add(str) } }
+    }
+    return result.values.toList()
+}
+
+fun groupAnagrams2(strs: Array<String>): List<List<String>> {
     val map = HashMap<String, MutableList<String>>()
     strs.forEach { str ->
         val sorted = str.toCharArray().sorted().toString()
