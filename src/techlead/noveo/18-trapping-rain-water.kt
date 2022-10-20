@@ -34,22 +34,22 @@ fun trap(height: IntArray): Int {
 
 // линейное время. конст. память
 fun trap2(height: IntArray): Int {
-    val maxIndex = height.maxOrNull()?.let { height.indexOf(it) } ?: -1
+    val maxHeightIndex = height.maxOrNull()?.let { height.indexOf(it) } ?: -1
 
-    var max = 0
-    var size = 0
-    for (i in 0..maxIndex) {
-        if (max > height[i])
-            size += max - height[i]
-        if (height[i] > max)
-            max = height[i]
+    var currMaxHeight = 0
+    var result = 0
+    for (i in 0..maxHeightIndex) {
+        if (currMaxHeight > height[i])
+            result += currMaxHeight - height[i]
+        if (height[i] > currMaxHeight)
+            currMaxHeight = height[i]
     }
-    max = 0
-    for (i in height.size - 1 downTo maxIndex) {
-        if (max > height[i])
-            size += max - height[i]
-        if (height[i] > max)
-            max = height[i]
+    currMaxHeight = 0
+    for (i in height.size - 1 downTo maxHeightIndex) {
+        if (currMaxHeight > height[i])
+            result += currMaxHeight - height[i]
+        if (height[i] > currMaxHeight)
+            currMaxHeight = height[i]
     }
-    return size
+    return result
 }
