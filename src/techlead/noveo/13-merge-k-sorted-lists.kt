@@ -1,7 +1,7 @@
 package techlead.noveo
 
 import techlead.LinkedNode
-import kotlin.math.ceil
+import java.util.PriorityQueue
 
 fun main() {
     val lists = listOf(
@@ -9,20 +9,38 @@ fun main() {
         LinkedNode(1).also { it.next = LinkedNode(3).also { it.next = LinkedNode(4) } },
         LinkedNode(2).also { it.next = LinkedNode(6) },
     )
-    println(mergeKLists(lists))
+    println(mergeKListsHeap(lists))
 
-    println(mergeKLists(listOf()))
+    println(mergeKListsHeap(listOf()))
+}
+
+fun mergeKListsHeap(lists: List<LinkedNode<Int>>): LinkedNode<Int>? {
+    val heap = PriorityQueue<Int>()
+    lists.forEach {
+        var curr: LinkedNode<Int>? = it
+        while (curr != null) {
+            heap.add(curr!!.value)
+            curr = curr!!.next
+        }
+    }
+    val result = LinkedNode(Int.MIN_VALUE)
+    var curr = result
+    while (heap.isNotEmpty()) {
+        curr.next = LinkedNode(heap.remove())
+        curr = curr.next!!
+    }
+    return result.next
 }
 
 fun mergeKLists(lists: List<LinkedNode<Int>>): LinkedNode<Int>? {
     var result: LinkedNode<Int>? = LinkedNode(Int.MIN_VALUE)
     lists.forEach {
-        result = merge2(result!!, it)
+        result = mergehelper(result!!, it)
     }
     return result?.next
 }
 
-fun merge2(one: LinkedNode<Int>, two: LinkedNode<Int>): LinkedNode<Int>? {
+fun mergehelper(one: LinkedNode<Int>, two: LinkedNode<Int>): LinkedNode<Int>? {
     val result = LinkedNode(Int.MIN_VALUE)
     var curr = result
     var localOne: LinkedNode<Int>? = one
